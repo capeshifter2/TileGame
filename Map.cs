@@ -2,11 +2,11 @@
 
 public class Map
 {
-    Room[] rooms;
+    public Room[] rooms;
     public Map()
     {
-        rooms = new Room[5];
-        for (int i = 0; i < 5; i++)
+        rooms = new Room[6];
+        for (int i = 0; i < 6; i++)
         {
             
             rooms[0] = new Room(@"C:\Users\CapeS\source\repos\TileGame\Map1.1.txt");
@@ -14,6 +14,7 @@ public class Map
             rooms[2] = new Room(@"C:\Users\CapeS\source\repos\TileGame\Map1.3.txt");
             rooms[3] = new Room(@"C:\Users\CapeS\source\repos\TileGame\Map1.4.txt");
             rooms[4] = new Room(@"C:\Users\CapeS\source\repos\TileGame\Map1.5.txt");
+            rooms[5] = new Room(@"C:\Users\CapeS\source\repos\TileGame\Map1Boss.txt");
         }
     }
     public void SetTile(Location location, MapTile.TileType type)

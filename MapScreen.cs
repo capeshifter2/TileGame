@@ -57,7 +57,7 @@ class MapScreen : ContainerConsole
             Room currentRoom = floor.GetRoom(roomNum);
             player.x = PlayerPosition.X;
             player.y = PlayerPosition.Y;
-            for (int i = -1; i < 1; i++) 
+            for (int i = -1; i < 1; i++)
             {
                 for (int j = -1; j < 1; j++)
                     currentRoom.grid[player.x + i, player.y + j].isSeen = true;
@@ -231,7 +231,7 @@ class MapScreen : ContainerConsole
     private void NextFloor()
     {
         MapConsole.Clear();
-        if (roomNum < 4)
+        if (roomNum < floor.rooms.Length)
             roomNum++;
         else
         {
@@ -366,9 +366,10 @@ class MapScreen : ContainerConsole
         {
             for (int j = 0; j < 40; j++)
             {
-                if (currentRoom.grid[i, j].IsSeen())
-                    MapConsole.DrawBox(new Rectangle(i + 1, j + 1, 0, 0), GetCell(i, j));
+                if (IsInSight(i, j))
+                    GetCell(i, j).CopyAppearanceTo(MapConsole[i, j]);
                 
+
             }
         }
         PlayerGlyph.CopyAppearanceTo(MapConsole[PlayerPosition.X, PlayerPosition.Y]);
