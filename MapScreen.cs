@@ -87,6 +87,19 @@ class MapScreen : ContainerConsole
             MapConsole.Print(1, 27, "Health: " + player.health + "/" + player.maxHealth + "       " + PlayerPosition.X + " " + PlayerPosition.Y + " ", Color.White);
             DrawMap();
         }
+        else if (currentlyViewing == "Opening Screen")
+        {
+            MapConsole.Clear(); 
+            MapConsole.Print(15, 4, "In the dark, you awake. The air is cold.");
+            MapConsole.Print(3, 5, "Suddenly, a light. You appear to be in a stone room, and you hear snarling");
+            MapConsole.Print(30, 20, "Press C to continue");
+            if (Global.KeyboardState.IsKeyDown(Keys.C))
+            {
+                currentlyViewing = "Game";
+                MapConsole.Clear();
+            }
+        }
+            
         else if (currentlyViewing == "Main Menu")
         {
             MapConsole.Clear();
@@ -94,7 +107,7 @@ class MapScreen : ContainerConsole
             MapConsole.Print(35, 8, "(Q)uit", Color.Red);
             if (Global.KeyboardState.IsKeyDown(Keys.S))
             {
-                currentlyViewing = "Game";
+                currentlyViewing = "Opening Screen";
                 MapConsole.Clear();
 
             }
